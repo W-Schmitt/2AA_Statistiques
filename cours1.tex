@@ -19,6 +19,12 @@
 \usepackage{fnpos}
 \usepackage{ftnxtra}
 
+% Maths
+\usepackage{amsmath}
+
+% Todo notes
+\usepackage{todonotes}
+
 % Table of contents for bibliography
 \usepackage[nottoc]{tocbibind}
 
@@ -73,6 +79,11 @@ prendre pour pouvoir affirmer que le candidat annoncé gagnant sera effectivemen
 élu.
 
 \subsection{Rappel des concepts abordés l'an dernier}
+\begin{figure}
+    \includegraphics[scale=.65]{img/mindmap-1AA-probas.pdf}    
+\end{figure}
+
+
 \begin{itemize}
     \item Lois de probabilité
     \begin{itemize}
@@ -112,11 +123,54 @@ On introduit les variables aléatoires suivantes :
     \item S : somme des deux valeurs
 \end{itemize}
 
-\paragraph{Question} Les variables aléatoires B et R sont égales ? 
+\subsubsection{Question} Les variables aléatoires B et R sont égales ? 
 \begin{itemize}
     \item Vrai
     \item Faux
     \item Autre
 \end{itemize}
+
+\subsubsection{Retours}
+La variable aléatoire \textbf{est une fonction}, qui à chaque probabilité fait
+correspondre une valeur.
+\begin{align*}
+    B: &\Omega \to \{1,2,3,4,5,6\} \\
+    &\omega \mapsto B(\omega) \\
+    &(b, r) \mapsto b
+\end{align*}
+
+\todo[inline]{Il manque un bout ici.}
+
+\begin{align*}
+    \omega = (b, r) \\
+    S \mapsto b+r
+\end{align*}
+
+avec b: valeur du dé bleu, r: valeur du dé rouge.
+
+Elles ne sont pas égales : sinon les valeurs prises seraient toujours égales.
+C'est-à-dire que si elles étaient égales, si le dé rouge tombait sur 1, le dé
+bleu tomberait également sur 1.
+
+Elles ont néanmoins la même loi.
+
+\subsubsection{Indépendance} Soient deux évènements, sont-ils indépendants ?
+
+\paragraph{Exemple 1}
+\begin{itemize}
+    \item $A = \{\text{Somme} = 3\}$
+    \item $B = \{\text{Dé rouge} = 4\}$
+\end{itemize}
+Les évènements ne sont pas indépendants, trivialement.
+
+
+\paragraph{Exemple 2}
+\begin{itemize}
+    \item $C = \{\text{Somme est paire} \}$
+    \item $D = \{\text{Dé rouge pair} \}$
+\end{itemize}
+C, comme D, sont de probabilité $\frac{1}{2}$. La réponse est complexe car D a
+une influence sur C. Néanmoins, les probabilités ne sont pas affectées : les
+évènements C et D sont donc bel et bien \textbf{indépendants}.
 
 \end{document}
