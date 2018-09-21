@@ -1,0 +1,122 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[a4paper, left=2cm, right=2cm, top=3.5cm, bottom=3.5cm]{geometry}
+\usepackage[french]{babel}
+
+% Paragraph spacing
+\setlength{\parskip}{1em}
+
+% Fancy headers
+\usepackage{fancyhdr}
+
+% Captions for subfigures
+\usepackage{subcaption}
+
+% Footnote inside a caption
+\usepackage{fnpos}
+\usepackage{ftnxtra}
+
+% Table of contents for bibliography
+\usepackage[nottoc]{tocbibind}
+
+% Inline monospace font
+\def\code#1{\texttt{#1}}
+
+% Figures
+\usepackage{graphicx}
+
+% Draw figures
+\usepackage{tikz}
+
+% Tikz node rotation
+\usetikzlibrary{positioning}
+
+% Usage: \rotnode[options]{rotation}{text}
+\newcommand\rotnode[3][]{%
+    \node [#1, opacity=0.0] (tmp) {#3};
+    \node [draw, rotate around={#2:(tmp.center)}] at (tmp) {#3};
+}
+
+% Clickable links
+\usepackage{hyperref}
+
+% Table of contents depth
+\setcounter{tocdepth}{2}
+
+% Inline code
+\usepackage{listings}
+\usepackage{color}
+
+\title{Principes et méthodes statistiques}
+
+\author{William SCHMITT}
+\date{2018-2019}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\subsection{Exemples}
+\paragraph{Studio de musique} Mesures de bruits pour construire un studio, la
+rue est au maximum à 74 dB, après 20 mesures. 74 dB est le seuil dérangeant 
+les enregistrements. On peut calculer à la fin de ce cours la probabilité 
+de subir des nuisances > 74 dB.
+
+\paragraph{Sondage} Suite à un sondage (51/49), on peut estimer le risque à 
+prendre pour pouvoir affirmer que le candidat annoncé gagnant sera effectivement
+élu.
+
+\subsection{Rappel des concepts abordés l'an dernier}
+\begin{itemize}
+    \item Lois de probabilité
+    \begin{itemize}
+        \item continues
+        \begin{itemize}
+            \item Normale
+            \item Poisson
+        \end{itemize}
+        \item discrètes
+        \begin{itemize}
+            \item Bernoulli
+            \item Binomiale
+            \item Géométrique
+        \end{itemize}
+    \end{itemize}
+    \item Indicateurs 
+    \begin{itemize}
+        \item espérance
+        \item variance
+        \item écart-type
+    \end{itemize}
+    \item Fonctions génératrices (des moments)
+    \item Fonction de répartition
+    \item Fonction de densité
+    \item Loi des grands nombres
+    \item Théorème central limite
+    \item Indépendance de variables aléatoires
+\end{itemize}
+
+\subsection{Les deux dés}
+Expérience aléatoire : on lance deux dés, un rouge et un bleu, à six faces et
+équilibrés.
+On introduit les variables aléatoires suivantes :
+\begin{itemize}
+    \item B : valeur du dé bleu
+    \item R : valeur du dé rouge
+    \item S : somme des deux valeurs
+\end{itemize}
+
+\paragraph{Question} Les variables aléatoires B et R sont égales ? 
+\begin{itemize}
+    \item Vrai
+    \item Faux
+    \item Autre
+\end{itemize}
+
+\end{document}
