@@ -1,0 +1,126 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[a4paper, left=2cm, right=2cm, top=3.5cm, bottom=3.5cm]{geometry}
+\usepackage[french]{babel}
+
+% Paragraph spacing
+\setlength{\parskip}{1em}
+
+% Fancy headers
+\usepackage{fancyhdr}
+
+% Captions for subfigures
+\usepackage{subcaption}
+
+% Footnote inside a caption
+\usepackage{fnpos}
+\usepackage{ftnxtra}
+
+% Maths
+\usepackage{amsmath,amssymb}
+
+% Todo notes
+\usepackage{todonotes}
+
+% Table of contents for bibliography
+\usepackage[nottoc]{tocbibind}
+
+% Inline monospace font
+\def\code#1{\texttt{#1}}
+
+% Figures
+\usepackage{graphicx}
+
+% Draw figures
+\usepackage{tikz}
+
+% Tikz node rotation
+\usetikzlibrary{positioning}
+
+% Usage: \rotnode[options]{rotation}{text}
+\newcommand\rotnode[3][]{%
+    \node [#1, opacity=0.0] (tmp) {#3};
+    \node [draw, rotate around={#2:(tmp.center)}] at (tmp) {#3};
+}
+
+% Clickable links
+\usepackage{hyperref}
+
+% Table of contents depth
+\setcounter{tocdepth}{2}
+
+% Inline code
+\usepackage{listings}
+\usepackage{color}
+
+\title{Principes et méthodes statistiques}
+
+\author{William SCHMITT}
+\date{2018-2019}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{Estimation}
+Grâce aux statistiques descriptives, on propose un modèle.
+
+On le valide en :
+\begin{itemize}
+    \item utilisant un graphe de probabilités
+    \item trouvant que c'est la seule possibilité
+\end{itemize}
+
+Le modèle dépend d'un (uniforme) ou plusieurs paramètres (exponentielle).
+
+Le (ou les) paramètre(s) n'est pas connu dans la vraie vie.
+
+\paragraph{Estimation} valeur réelle caclculée à partir des données $x_i$ dont on aimerait qu'elle soit "proche" du paramètre inconnnu $\theta$ qu'on cherche à estimer.
+
+\subsection{Critères pour construire une estimation}
+Idée : faire coller la théorie (modèle proposé, i.e. loi, paramètres) aux résultats obtenus.
+\subsubsection{Critères usuels}
+\paragraph{Moment d'ordre 1} l'espérance théorique représente la moyenne, l'échantillon a une moyenne. On approxime l'espérance théorique par la moyenne des résultats obtenus.
+
+\begin{align*}
+    E(X) & \sim \frac{1}{n} \sum_{i=1}^n x_i \\
+    f(\theta ) & \sim \frac{1}{n} \sum_{i = 1}^n x_i \\
+    f(\theta_{\text{est}}) &= \frac{1}{n} \sum_{i=1}^n x_i \\
+    \theta_{\text{est}} &= f^{-1}(\frac{1}{n} \sum_{i=1}^n x_i)
+\end{align*}
+
+Cette méthode ne permet pas d'évaluer la variance.
+
+\paragraph{Moment d'ordre 2} Même démarche avec la variance
+
+\paragraph{Maximum de vraisemblance}
+
+\subsection{Qualité d'estimation}
+L'estimation devient la valeur prise par l'estimateur (i.e. la \textbf{réalisation} de l'estimateur).
+
+Si on recommence l'expérience aléatoire qui consiste à collecter des données dans les mêmes conditions que celles dont on dispose (même nombre, même protocole de recueil), les variables aléatoires restent les mêmes (l'estimateur aussi), par contre les valeurs vont probablement être différentes, et donc l'estimation obtenue va très vraisemblablement être différente.
+
+\subsubsection{Biais}
+On souhaite que l'estimation tombe sur la \textbf{vraie valeur} $\theta$ du paramètre inconnu. On calcule donc l'\textbf{espérance de l'estimateur} :
+\begin{itemize}
+    \item Si l'espérance permet de retrouver le paramètre inconnu : c'est un \textbf{estimateur sans biais}
+    \item Sinon, il y a un biais (qu'on peut éventuellement corriger avec la linéarité de l'espérance).
+\end{itemize}
+
+Dans le cas de Jeannette, $\mathbb{E}(T_{\text{est}}) = \frac{n}{n+1}t$, on peut débiaiser en remplaçant l'estimateur de Jeannette par $\frac{n+1}{n} \times \text{Max}$ pour trouver un estimateur débiaisé. Cela fonctionne pour des facteurs multiplicatifs mais également pour des additions.
+
+\subsubsection{Convergence}
+
+Une fois l'estimateur débiaisé, on souhaite minimiser la dispersion de l'estimateur autour de la \textbf{vraie valeur} $\theta$. On calcule donc la variance de l'estimateur : elle est meilleure si la variance est faible.
+
+\subsubsection{Appréciation de la qualité}
+\begin{itemize}
+    \item Théorique : quand c'est possible
+    \item Simulations : sinon
+\end{itemize}
+
+\end{document}
